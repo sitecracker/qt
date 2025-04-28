@@ -1,0 +1,39 @@
+      self.trapezoidButton.clicked.connect(self.trapezoid)
+        self.rectangleButton.clicked.connect(self.rectangle)
+        self.triangleButton.clicked.connect(self.triangle)
+        self.areaButton.clicked.connect(self.area)
+        self.closeButton.clicked.connect(MainWindow.close)
+
+        self.actionNew_Trapezoid.triggered.connect(self.trapezoid)
+        self.actionNew_Rectangle.triggered.connect(self.rectangle)
+        self.actionNew_Triangle.triggered.connect(self.triangle)
+
+        self.current_figure = None
+
+
+  def get_random(self):
+        return random.choice(lists)
+
+
+    def trapezoid(self):
+        side, base, height = self.get_random()
+        self.current_figure = Trapezoid(side, base, height)
+        self.label.setPixmap(QtGui.QPixmap("trapezoid.jpg"))
+        self.label_2.setText(str(self.current_figure))
+
+    def rectangle(self):
+        side, _, height = self.get_random()
+        self.current_figure = Rectangle(side, height)
+        self.label.setPixmap(QtGui.QPixmap("rectangle.jpg"))
+        self.label_2.setText(str(self.current_figure))
+
+    def triangle(self):
+        _, base, height = self.get_random()
+        self.current_figure = Triangle(base, height)
+        self.label.setPixmap(QtGui.QPixmap("triangle.jpg"))
+        self.label_2.setText(str(self.current_figure))
+
+    def area(self):
+        if self.current_figure:
+            area = self.current_figure.area()
+            self.label_2.setText(self.label_2.text() + f"\nArea: {area}")
