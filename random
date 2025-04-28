@@ -1,0 +1,7 @@
+import random
+
+
+lists = []
+for _ in range(100):
+    sublist = random.sample(range(1, 200), 3)
+    lists.append(sublist)
