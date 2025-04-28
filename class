@@ -1,0 +1,33 @@
+class Trapezoid:
+    def __init__(self, side, base, height):
+        self.side = side
+        self.base = base
+        self.height = height
+    
+    def __str__(self):
+        return f"Trapezoid: Side: {self.side}, Base: {self.base}, Height: {self.height}"
+
+    def area(self):
+        return (self.base + self.side)/2 * self.height
+
+
+class Rectangle(Trapezoid):
+    def __init__(self, side, height):
+        super().__init__(side, side, height)
+    
+    def __str__(self):
+        return f"Rectangle: Side: {self.side}, Height: {self.height}"
+
+    def area(self):
+        return self.side * self.height
+
+
+class Triangle(Rectangle):
+    def __init__(self, base, height):
+        super().__init__(base, height)
+
+    def __str__(self):
+        return f"Trianglr: Base: {self.base}, Height: {self.height}"
+
+    def area(self):
+        return (self.base * self.height) / 2
